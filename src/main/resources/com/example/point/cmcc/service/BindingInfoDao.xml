@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.point.cmcc.service.BindingInfoDao">
+  <resultMap id="BaseResultMap" type="com.example.point.cmcc.service.BindingInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userid" jdbcType="VARCHAR" property="userid" />
+    <result column="appid" jdbcType="VARCHAR" property="appid" />
+    <result column="outer_userid" jdbcType="VARCHAR" property="outerUserid" />
+    <result column="mobileid" jdbcType="VARCHAR" property="mobileid" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="bindingtimes" jdbcType="VARCHAR" property="bindingtimes" />
+    <result column="modtime" jdbcType="DATE" property="modtime" />
+    <result column="intime" jdbcType="DATE" property="intime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, userid, appid, outer_userid, mobileid, `state`, bindingtimes, modtime, intime
+  </sql>
+  <select id="selectByExample" parameterType="com.example.point.cmcc.service.BindingInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from binding_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from binding_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from binding_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.point.cmcc.service.BindingInfoExample">
+    delete from binding_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.point.cmcc.service.BindingInfo" useGeneratedKeys="true">
+    insert into binding_info (userid, appid, outer_userid, 
+      mobileid, `state`, bindingtimes, 
+      modtime, intime)
+    values (#{userid,jdbcType=VARCHAR}, #{appid,jdbcType=VARCHAR}, #{outerUserid,jdbcType=VARCHAR}, 
+      #{mobileid,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{bindingtimes,jdbcType=VARCHAR}, 
+      #{modtime,jdbcType=TIMESTAMP}, #{intime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.point.cmcc.service.BindingInfo" useGeneratedKeys="true">
+    insert into binding_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="appid != null">
+        appid,
+      </if>
+      <if test="outerUserid != null">
+        outer_userid,
+      </if>
+      <if test="mobileid != null">
+        mobileid,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="bindingtimes != null">
+        bindingtimes,
+      </if>
+      <if test="modtime != null">
+        modtime,
+      </if>
+      <if test="intime != null">
+        intime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null">
+        #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="outerUserid != null">
+        #{outerUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileid != null">
+        #{mobileid,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="bindingtimes != null">
+        #{bindingtimes,jdbcType=VARCHAR},
+      </if>
+      <if test="modtime != null">
+        #{modtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="intime != null">
+        #{intime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.point.cmcc.service.BindingInfoExample" resultType="java.lang.Long">
+    select count(*) from binding_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update binding_info
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userid != null">
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appid != null">
+        appid = #{record.appid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.outerUserid != null">
+        outer_userid = #{record.outerUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobileid != null">
+        mobileid = #{record.mobileid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null">
+        `state` = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bindingtimes != null">
+        bindingtimes = #{record.bindingtimes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modtime != null">
+        modtime = #{record.modtime,jdbcType=DATE},
+      </if>
+      <if test="record.intime != null">
+        intime = #{record.intime,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update binding_info
+    set id = #{record.id,jdbcType=INTEGER},
+      userid = #{record.userid,jdbcType=VARCHAR},
+      appid = #{record.appid,jdbcType=VARCHAR},
+      outer_userid = #{record.outerUserid,jdbcType=VARCHAR},
+      mobileid = #{record.mobileid,jdbcType=VARCHAR},
+      `state` = #{record.state,jdbcType=VARCHAR},
+      bindingtimes = #{record.bindingtimes,jdbcType=VARCHAR},
+      modtime = #{record.modtime,jdbcType=DATE},
+      intime = #{record.intime,jdbcType=DATE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.point.cmcc.service.BindingInfo">
+    update binding_info
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null">
+        appid = #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="outerUserid != null">
+        outer_userid = #{outerUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileid != null">
+        mobileid = #{mobileid,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="bindingtimes != null">
+        bindingtimes = #{bindingtimes,jdbcType=VARCHAR},
+      </if>
+      <if test="modtime != null">
+        modtime = #{modtime,jdbcType=DATE},
+      </if>
+      <if test="intime != null">
+        intime = #{intime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.point.cmcc.service.BindingInfo">
+    update binding_info
+    set userid = #{userid,jdbcType=VARCHAR},
+      appid = #{appid,jdbcType=VARCHAR},
+      outer_userid = #{outerUserid,jdbcType=VARCHAR},
+      mobileid = #{mobileid,jdbcType=VARCHAR},
+      `state` = #{state,jdbcType=VARCHAR},
+      bindingtimes = #{bindingtimes,jdbcType=VARCHAR},
+      modtime = #{modtime,jdbcType=DATE},
+      intime = #{intime,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

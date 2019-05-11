@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>var __startTime = (new Date).getTime()</script>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>密码登录</title>
+    <meta name=data-spm content=3.1>
+    <script src=/static/js/common/tfd.js></script>
+    <script src=/static/js/common/fmOpt.js></script>
+    <script src=/static/js/common/rem.js></script>
+    <script>var dr = document.referrer;
+    -1 < location.host.indexOf("cahngyou") ? document.domain = "changyoyo.com" : -1 < location.host.indexOf("ppppoints.com") && (document.domain = "ppppoints.com")</script>
+    <link href="/static/css/home/login.min.css" rel="stylesheet">
+    <link href="/static/css/login.css" rel="stylesheet">
+</head>
+<body data-spm=6>
+<header class="mui-bar mui-bar-nav"><a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a></header>
+<div data-spm=38 class=reg-text><a id=unline><b>注册</b></a></div>
+<div id=login-title><p class=title-text>密码登录</p></div>
+<div class=login_box id=input-contain>
+    <div class=login_inner><input id=mobile type=tel onkeyup='this.value=this.value.replace(/\D/g,"")' class=login-input
+                                  maxlength=11 placeholder="" autocomplete=off><span class=trans>手机号</span></div>
+    <div class=login_inner>
+        <div class=login_left><input id=code type=text class="login-input mui-input-password" placeholder=""
+                                     autocomplete=off onfocus='this.setAttribute("type","password")'
+                                     onkeyup='value=value.replace(/[\u4E00-\u9FA5]/g,"")'
+                                     onblur='value=value.replace(/[\u4E00-\u9FA5]/g,"")' style=width:85%><span
+                class=trans>密码</span><img id=eyesSwitch src=i/eyes-close.png></div>
+    </div>
+    <a id=getpwd>忘记密码?</a><a id=login class=login_btn disabled data-spm=100515>登录</a></div>
+<div class=link-area><a id=plogin class=login_btn2>短信验证码登录</a></div>
+<div class=last-a data-spm=40><span>登录即表示同意畅由</span><a href=/register/agreement.htm>《用户使用协议》</a></div>
+<script src=/static/js/libs/mui/mui.min.js></script>
+<script src=/static/js/libs/CryptoJS/md5.js></script>
+<script src=/js/jsencrypt.js></script>
+<script src=/static/js/common/common.js></script>
+<script src=/static/js/common/spm.js></script>
+<script src=/static/js/common/security.js></script>
+<script src="/auth/j/loginpwd.js?v=20180825"></script>
+<script src="/auth/j/inputTransition.js?v=20180823"></script>
+</body>
+</html>
