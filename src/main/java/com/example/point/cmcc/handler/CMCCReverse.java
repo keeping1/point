@@ -36,15 +36,15 @@ public class CMCCReverse {
         IdWorker idWorker = new IdWorker();
         cmccjf0008Request.setReTradeID(idWorker.nextId());
         //对应扣减交易流水好
-        cmccjf0008Request.setDeTradeID();
+       // cmccjf0008Request.setDeTradeID();
         ///第三方账号
         cmccjf0008Request.setThirdAccount(uname);
         //手机号
         cmccjf0008Request.setMobile(mobile);
         //冲正积分值
-        cmccjf0008Request.setAndpoint();
+        //cmccjf0008Request.setAndpoint();
         //第三方冲正值
-        cmccjf0008Request.setThirdPoint();
+        //cmccjf0008Request.setThirdPoint();
         //备注
         cmccjf0008Request.setComments("账户信息对不上");
 
